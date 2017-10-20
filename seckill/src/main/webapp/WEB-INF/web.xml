@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns="http://java.sun.com/xml/ns/javaee" 
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+		http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+
+	<!-- 配置DispatcherServlet -->
+	<servlet>
+		<servlet-name>seckill-Dispatcher</servlet-name>
+		<servlet-class>	org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 配置DispatcherServlet需要加载的配置文件
+			加载顺序：
+			mybatis->spring->springmvc
+			所以，需要在spring中整合mybatis，在Springmvc中整合spring
+		 -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring/spring-*.xml</param-value>
+		</init-param>	
+	</servlet> 
+  
+  	<!-- 配置mapping -->
+  	<servlet-mapping>
+  		<servlet-name>seckill-Dispatcher</servlet-name>
+  		<!-- 匹配所有请求 -->
+  		<url-pattern>/</url-pattern>
+  	</servlet-mapping>
+</web-app>
